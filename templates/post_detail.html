@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}{{ post.title }}{% endblock title %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <!-- Post Content -->
+  <article class="bg-white rounded-lg shadow-lg p-8 mb-8">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ post.title }}</h1>
+    <div class="text-gray-500 mb-6">
+      Published on {{ post.created_date|date:"F j, Y" }}
+    </div>
+    <div class="prose max-w-none">{{ post.content|linebreaks }}</div>
+  </article>
+
+  <!-- Comments Section -->
+  <div class="bg-white rounded-lg shadow-lg p-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Comments</h2>
+
+    <!-- Comment Form -->
+    <form method="post" class="mb-8">
+      {% csrf_token %}
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Name</label>
+          {{ form.author }}
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Comment</label>
+          {{ form.text }}
+        </div>
+        <button
+          type="submit"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Post Comment
+        </button>
+      </div>
+    </form>
+
+    <!-- Comments List -->
+    <div class="space-y-6">
+      {% for comment in comments %}
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-medium text-gray-900">
+            {{ comment.author }}
+          </h3>
+          <time class="text-sm text-gray-500"
+            >{{ comment.created_date|date:"F j, Y" }}</time
+          >
+        </div>
+        <p class="text-gray-700">{{ comment.text|linebreaks }}</p>
+      </div>
+      {% empty %}
+      <p class="text-gray-500 text-center">
+        No comments yet. Be the first to comment!
+      </p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
