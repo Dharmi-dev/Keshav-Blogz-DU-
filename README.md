@@ -1,4 +1,4 @@
-# 🚀 Keshav Diaries Project
+# 🚀 Keshav blogz (DU) Project
 
 A modern, feature-rich blog application built with Django, featuring a responsive design with Tailwind CSS and dynamic animations. 
 
@@ -165,4 +165,4 @@ For support, email your-email@example.com or create an issue in the repository.
 - All contributors who help improve the project
 
 ---
-Made with ❤️ by [Adarsh Maurya]
+Made with ❤️ by [Dharmesh Tanwar]
