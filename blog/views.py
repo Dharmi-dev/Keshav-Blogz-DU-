@@ -3,6 +3,8 @@ from django.views.generic import ListView
 from .models import Post
 from .forms import CommentForm
 from django.contrib import messages
+from django.urls import reverse
+
 
 class PostListView(ListView):
     model = Post
@@ -34,7 +36,7 @@ def post_detail(request, pk):
             comment.post = post
             comment.save()
             messages.success(request, 'Your comment has been added successfully!')
-            return redirect('post_detail', pk=pk)
+            return redirect('blog:post_detail', pk=pk)
     else:
         form = CommentForm()
     
@@ -43,3 +45,9 @@ def post_detail(request, pk):
         'comments': comments,
         'form': form
     })
+
+
+def get_absolute_url(self):
+    
+    # To this
+    return reverse('blog:post_detail', kwargs={'pk': self.pk})
