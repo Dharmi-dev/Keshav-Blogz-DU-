@@ -1,8 +1,7 @@
 # 🚀 Keshav Diaries Project
 
 A modern, feature-rich blog application built with Django, featuring a responsive design with Tailwind CSS and dynamic animations. 
-## Screenshot
-![Screenshot 2024-11-11 120023](https://github.com/user-attachments/assets/e07061b7-3864-40af-ae38-08b13959159e)
+
 
 
 ## ✨ Features
